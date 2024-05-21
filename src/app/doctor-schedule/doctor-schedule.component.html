@@ -1,0 +1,27 @@
+<div class="schedule">
+    <h2>Doctor's Schedule</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th *ngFor="let day of days">{{ day }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let slot of slots">
+          <td>{{ slot }}</td>
+          <td *ngFor="let day of days">
+            <span
+              [ngClass]="{
+                taken: isSlotTaken(day, slot),
+                free: !isSlotTaken(day, slot)
+              }"
+            >
+              {{ isSlotTaken(day, slot) ? 'Taken' : 'Free' }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
